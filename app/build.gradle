@@ -14,7 +14,7 @@ android {
     }
     compileSdkVersion 33
     defaultConfig {
-        applicationId "com.icaali.StickerAnisCakimin"
+        applicationId "com.icaali.StickerGanjarMahfud"
         minSdkVersion 19
         targetSdkVersion 33
         versionCode 4

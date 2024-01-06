@@ -10,8 +10,8 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
-import com.icaali.StickerAnisCakimin.StickerPackListActivity
-import com.icaali.StickerAnisCakimin.R
+import com.icaali.StickerGanjarMahfud.StickerPackListActivity
+import com.icaali.StickerGanjarMahfud.R
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
     val TAG = "FirebaseMessagingService"

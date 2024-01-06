@@ -3,8 +3,8 @@
   "ios_app_store_link": "",
   "sticker_packs": [
     {
-      "identifier": "anis_1",
-      "name": "Amin1",
+      "identifier": "ganjar_1",
+      "name": "Ganjar1",
       "publisher": "icaali",
       "tray_image_file": "amin_p1.png",
       "publisher_email":"",
@@ -63,8 +63,8 @@
       ]
     },
     {
-      "identifier": "anis_2",
-      "name": "Amin2",
+      "identifier": "ganjar_2",
+      "name": "Ganjar2",
       "publisher": "icaali",
       "tray_image_file": "amin_p1.png",
       "publisher_email":"",
@@ -123,8 +123,8 @@
       ]
     },
     {
-      "identifier": "anis_3",
-      "name": "Amin3",
+      "identifier": "ganjar_3",
+      "name": "Ganjar3",
       "publisher": "icaali",
       "tray_image_file": "amin_p1.png",
       "publisher_email":"",
@@ -183,8 +183,8 @@
       ]
     },
     {
-      "identifier": "anis_4",
-      "name": "Amin4",
+      "identifier": "ganjar_4",
+      "name": "Ganjar4",
       "publisher": "icaali",
       "tray_image_file": "amin_p1.png",
       "publisher_email":"",
@@ -243,8 +243,8 @@
       ]
     },
     {
-      "identifier": "anis_5",
-      "name": "Amin5",
+      "identifier": "ganjar_5",
+      "name": "Ganjar5",
       "publisher": "icaali",
       "tray_image_file": "amin_p1.png",
       "publisher_email":"",
