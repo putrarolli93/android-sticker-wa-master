@@ -1,0 +1,306 @@
+{
+  "android_play_store_link": "",
+  "ios_app_store_link": "",
+  "sticker_packs": [
+    {
+      "identifier": "anis_1",
+      "name": "Amin1",
+      "publisher": "icaali",
+      "tray_image_file": "amin_p1.png",
+      "publisher_email":"",
+      "publisher_website": "",
+      "privacy_policy_website": "",
+      "license_agreement_website": "",
+      "stickers": [
+        {
+          "image_file": "1.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "2.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "3.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "4.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "5.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "6.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "7.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "8.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "9.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "10.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "11.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "12.webp",
+          "emojis": ["😄","😀","🙂"]
+        }
+      ]
+    },
+    {
+      "identifier": "anis_2",
+      "name": "Amin2",
+      "publisher": "icaali",
+      "tray_image_file": "amin_p1.png",
+      "publisher_email":"",
+      "publisher_website": "",
+      "privacy_policy_website": "",
+      "license_agreement_website": "",
+      "stickers": [
+        {
+          "image_file": "1.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "2.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "3.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "4.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "5.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "6.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "7.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "8.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "9.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "10.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "11.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "12.webp",
+          "emojis": ["😄","😀","🙂"]
+        }
+      ]
+    },
+    {
+      "identifier": "anis_3",
+      "name": "Amin3",
+      "publisher": "icaali",
+      "tray_image_file": "amin_p1.png",
+      "publisher_email":"",
+      "publisher_website": "",
+      "privacy_policy_website": "",
+      "license_agreement_website": "",
+      "stickers": [
+        {
+          "image_file": "1.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "2.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "3.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "4.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "5.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "6.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "7.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "8.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "9.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "10.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "11.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "12.webp",
+          "emojis": ["😄","😀","🙂"]
+        }
+      ]
+    },
+    {
+      "identifier": "anis_4",
+      "name": "Amin4",
+      "publisher": "icaali",
+      "tray_image_file": "amin_p1.png",
+      "publisher_email":"",
+      "publisher_website": "",
+      "privacy_policy_website": "",
+      "license_agreement_website": "",
+      "stickers": [
+        {
+          "image_file": "1.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "2.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "3.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "4.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "5.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "6.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "7.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "8.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "9.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "10.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "11.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "12.webp",
+          "emojis": ["😄","😀","🙂"]
+        }
+      ]
+    },
+    {
+      "identifier": "anis_5",
+      "name": "Amin5",
+      "publisher": "icaali",
+      "tray_image_file": "amin_p1.png",
+      "publisher_email":"",
+      "publisher_website": "",
+      "privacy_policy_website": "",
+      "license_agreement_website": "",
+      "stickers": [
+        {
+          "image_file": "1.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "2.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "3.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "4.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "5.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "6.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "7.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "8.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "9.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "10.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "11.webp",
+          "emojis": ["😄","😀","🙂"]
+        },
+        {
+          "image_file": "12.webp",
+          "emojis": ["😄","😀","🙂"]
+        }
+      ]
+    }
+  ]
+}
