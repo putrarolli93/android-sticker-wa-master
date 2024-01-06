@@ -1,8 +1,8 @@
 package com.icaali.ga;
 
 //import com.google.android.gms.ads.InterstitialAd;
-import com.icaali.StickerGanjarMahfud.R;
-import com.icaali.StickerGanjarMahfud.StickerPackListActivity;
+import com.icaali.StickerPrabowoGibran.R;
+import com.icaali.StickerPrabowoGibran.StickerPackListActivity;
 
 public class LoadAd extends StickerPackListActivity {
 //
