@@ -20,7 +20,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3844487552229866~9847454874"/>
+            android:value="ca-app-pub-5079073523461972~3170607130"/>
         <activity android:name=".EntryActivity"
             android:exported="true">
             <intent-filter>
