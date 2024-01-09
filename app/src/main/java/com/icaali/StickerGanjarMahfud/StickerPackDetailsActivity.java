@@ -139,7 +139,7 @@ public class StickerPackDetailsActivity extends AddStickerPackActivity implement
     }
 
     public void loadAd() {
-        RewardedInterstitialAd.load(this, "ca-app-pub-3844487552229866/3801701525",
+        RewardedInterstitialAd.load(this, "ca-app-pub-5079073523461972/1950429771",
                 new AdRequest.Builder().build(), new RewardedInterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(RewardedInterstitialAd ad) {

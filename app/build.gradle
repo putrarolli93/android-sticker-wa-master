@@ -17,8 +17,8 @@ android {
         applicationId "com.icaali.StickerGanjarMahfud"
         minSdkVersion 19
         targetSdkVersion 33
-        versionCode 4
-        versionName "1.5"
+        versionCode 5
+        versionName "1.6"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         def contentProviderAuthority = applicationId + ".stickercontentprovider"
         // Creates a placeholder property to use in the manifest.

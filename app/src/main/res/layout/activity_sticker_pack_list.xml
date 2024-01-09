@@ -38,7 +38,7 @@
         android:layout_alignParentBottom="true"
         ads:layout_constraintBottom_toBottomOf="parent"
         ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3844487552229866/8757734489">
+        ads:adUnitId="ca-app-pub-5079073523461972/5754723669">
     </com.google.android.gms.ads.AdView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
