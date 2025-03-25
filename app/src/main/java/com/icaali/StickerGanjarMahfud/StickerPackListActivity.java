@@ -19,19 +19,32 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import com.android.billingclient.api.AcknowledgePurchaseParams;
+import com.android.billingclient.api.BillingClient;
+import com.android.billingclient.api.BillingClientStateListener;
+import com.android.billingclient.api.BillingFlowParams;
+import com.android.billingclient.api.BillingResult;
+import com.android.billingclient.api.ProductDetails;
+import com.android.billingclient.api.Purchase;
+import com.android.billingclient.api.PurchasesUpdatedListener;
+import com.android.billingclient.api.QueryProductDetailsParams;
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
@@ -61,6 +74,9 @@ public class StickerPackListActivity extends AddStickerPackActivity implements O
     public static String packName;
     private AdView mAdView;
     private RewardedInterstitialAd rewardedInterstitialAd;
+    private BillingClient billingClient;
+    private ProductDetails selectedProductDetails; // Menyimpan data produk
+    Button btnPurchase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +88,111 @@ public class StickerPackListActivity extends AddStickerPackActivity implements O
         stickerPackList = getIntent().getParcelableArrayListExtra(EXTRA_STICKER_PACK_LIST_DATA);
         showStickerPackList(stickerPackList);
         initAdmob();
+        setupBillingClient();
+    }
+
+    private void setupBillingClient() {
+        btnPurchase = findViewById(R.id.btnPremium);
+        btnPurchase.setOnClickListener(v -> {
+            if (selectedProductDetails != null) {
+                purchaseProduct(selectedProductDetails);
+            } else {
+                Log.d("Billing", "Produk belum siap. Tunggu sebentar...");
+            }
+        });
+
+        billingClient = BillingClient.newBuilder(this)
+                .setListener(purchasesUpdatedListener)
+                .enablePendingPurchases()
+                .build();
+
+        billingClient.startConnection(new BillingClientStateListener() {
+            @Override
+            public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
+                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                    Log.d("Billing", "Billing client connected");
+                    queryAvailableProducts();
+                }
+            }
+
+            @Override
+            public void onBillingServiceDisconnected() {
+                Log.d("Billing", "Billing service disconnected");
+            }
+        });
+    }
+
+    private final PurchasesUpdatedListener purchasesUpdatedListener = new PurchasesUpdatedListener() {
+        @Override
+        public void onPurchasesUpdated(@NonNull BillingResult billingResult, @Nullable List<Purchase> purchases) {
+            if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK && purchases != null) {
+                for (Purchase purchase : purchases) {
+                    handlePurchase(purchase);
+                }
+            } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.USER_CANCELED) {
+                Log.d("Billing", "User canceled the purchase");
+            } else {
+                Log.d("Billing", "Error: " + billingResult.getDebugMessage());
+            }
+        }
+    };
+
+    private void queryAvailableProducts() {
+        List<String> skuList = Arrays.asList("remove_ads", "premium_upgrade");
+        QueryProductDetailsParams params = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            params = QueryProductDetailsParams.newBuilder()
+                    .setProductList(
+                            skuList.stream()
+                                    .map(sku -> QueryProductDetailsParams.Product.newBuilder()
+                                            .setProductId(sku)
+                                            .setProductType(BillingClient.ProductType.INAPP)
+                                            .build()
+                                    ).collect(Collectors.toList())
+                    )
+                    .build();
+        }
+
+        billingClient.queryProductDetailsAsync(params, (billingResult, productDetailsList) -> {
+            if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                for (ProductDetails productDetails : productDetailsList) {
+                    Log.d("Billing", "Product: " + productDetails.getTitle() +
+                            ", Price: " + productDetails.getOneTimePurchaseOfferDetails().getFormattedPrice());
+                    selectedProductDetails = productDetails; // Simpan produk untuk dibeli nanti
+                }
+            }
+        });
+    }
+
+    private void handlePurchase(Purchase purchase) {
+        if (purchase.getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
+            Log.d("Billing", "Purchase successful: " + purchase.getProducts());
+
+            if (!purchase.isAcknowledged()) {
+                AcknowledgePurchaseParams acknowledgePurchaseParams =
+                        AcknowledgePurchaseParams.newBuilder()
+                                .setPurchaseToken(purchase.getPurchaseToken())
+                                .build();
+
+                billingClient.acknowledgePurchase(acknowledgePurchaseParams, billingResult -> {
+                    if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                        Log.d("Billing", "Purchase acknowledged");
+                    }
+                });
+            }
+        }
+    }
+
+    private void purchaseProduct(ProductDetails productDetails) {
+        BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
+                .setProductDetailsParamsList(Collections.singletonList(
+                        BillingFlowParams.ProductDetailsParams.newBuilder()
+                                .setProductDetails(productDetails)
+                                .build()
+                ))
+                .build();
+
+        billingClient.launchBillingFlow(this, billingFlowParams);
     }
 
     void checkInternet() {
