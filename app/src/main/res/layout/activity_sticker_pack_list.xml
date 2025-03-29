@@ -7,12 +7,15 @@
     tools:context=".StickerPackListActivity"
     tools:showIn="@layout/activity_sticker_pack_list">
 
-    <Button
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#0ff"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textAlignment="textEnd"
+        android:background="#f00"
+        android:textColor="#fff"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
         android:text="GO PREMIUM"
         android:id="@+id/btnPremium"/>
 

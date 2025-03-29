@@ -13,6 +13,7 @@ import static android.content.ContentValues.TAG;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -26,7 +27,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
@@ -58,6 +62,7 @@ import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.rewarded.RewardItem;
 import com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAd;
 import com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAdLoadCallback;
+import com.icaali.PrefManager;
 
 
 public class StickerPackListActivity extends AddStickerPackActivity implements OnUserEarnedRewardListener {
@@ -76,23 +81,35 @@ public class StickerPackListActivity extends AddStickerPackActivity implements O
     private RewardedInterstitialAd rewardedInterstitialAd;
     private BillingClient billingClient;
     private ProductDetails selectedProductDetails; // Menyimpan data produk
-    Button btnPurchase;
+    TextView btnPurchase;
+    ImageView banner;
+    private PrefManager prefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 //        checkInternet();
         super.onCreate(savedInstanceState);
 //        Fresco.initialize(this);
+        prefManager = new PrefManager(this);
         setContentView(R.layout.activity_sticker_pack_list);
         packRecyclerView = findViewById(R.id.sticker_pack_list);
+        banner = findViewById(R.id.Banner);
         stickerPackList = getIntent().getParcelableArrayListExtra(EXTRA_STICKER_PACK_LIST_DATA);
+        btnPurchase = findViewById(R.id.btnPremium);
+
         showStickerPackList(stickerPackList);
         initAdmob();
-        setupBillingClient();
+        if (prefManager.getPurchaseStatus()) {
+            btnPurchase.setText("Anda sudah Premium");
+            btnPurchase.setBackgroundColor(Color.GREEN);
+            btnPurchase.setTextColor(Color.BLACK);
+            banner.setVisibility(View.GONE);
+        } else {
+            setupBillingClient();
+        }
     }
 
     private void setupBillingClient() {
-        btnPurchase = findViewById(R.id.btnPremium);
         btnPurchase.setOnClickListener(v -> {
             if (selectedProductDetails != null) {
                 purchaseProduct(selectedProductDetails);
@@ -138,7 +155,7 @@ public class StickerPackListActivity extends AddStickerPackActivity implements O
     };
 
     private void queryAvailableProducts() {
-        List<String> skuList = Arrays.asList("remove_ads", "premium_upgrade");
+        List<String> skuList = Arrays.asList("remove.ads.one.time");
         QueryProductDetailsParams params = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
             params = QueryProductDetailsParams.newBuilder()
@@ -151,6 +168,10 @@ public class StickerPackListActivity extends AddStickerPackActivity implements O
                                     ).collect(Collectors.toList())
                     )
                     .build();
+        }
+        if (!billingClient.isReady()) {
+            Log.e("Billing", "BillingClient belum siap! Coba lagi nanti.");
+            return;
         }
 
         billingClient.queryProductDetailsAsync(params, (billingResult, productDetailsList) -> {
@@ -167,6 +188,12 @@ public class StickerPackListActivity extends AddStickerPackActivity implements O
     private void handlePurchase(Purchase purchase) {
         if (purchase.getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
             Log.d("Billing", "Purchase successful: " + purchase.getProducts());
+
+            //Set Success payment view
+            btnPurchase.setText("Anda sudah Premium");
+            btnPurchase.setBackgroundColor(Color.GREEN);
+            btnPurchase.setTextColor(Color.BLACK);
+            banner.setVisibility(View.GONE);
 
             if (!purchase.isAcknowledged()) {
                 AcknowledgePurchaseParams acknowledgePurchaseParams =
