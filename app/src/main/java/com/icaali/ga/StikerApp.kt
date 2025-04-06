@@ -57,8 +57,6 @@ internal class StikerApp : Application() {
                         if (purchase.products.contains("remove.ads.one.time")) {
                             found = true
                         }
-                        else
-                            found = false
                     }
                 }
                 prefManager?.savePurchaseStatus(found)
